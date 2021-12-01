@@ -64,7 +64,11 @@ wk.register(
       },
 
       ["b"] = {
-          name = "Buffer"
+          name = "Buffer",
+          c = {"<cmd>BufferClose<cr>", "Close buffer"},
+          C = {"<cmd>BufferCloseAllButCurrent<cr>", "Close all other buffers"},
+          b = {"<cmd>BufferPick<cr>", "Jump to buffer"},
+          p = {"<cmd>BufferPin<cr>", "Pin buffer"},
         },
 
       ["t"] = {
@@ -74,12 +78,35 @@ wk.register(
           m = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
     },
 
+      ["l"] = {
+          name = "Lsp",
+          r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename in Buffer"},
+          q = {"<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Set Loclist"},
+          f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format"},
+          e = {"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Line Diagnostics"},
+          c = {"<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder"},
+          d = {"<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder"},
+          l = {"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List Workspace"},
+          D = {"<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition"},
+          a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"}
+
+        },
 
       -- No highliht
       ["h"] = {"<cmd>noh<cr>", "No highlight"},
 
       -- QUIT ALL
       ["Q"] = {"<cmd>qa!<cr>", "QUIT ALL"},
+
+      --Toggle light and dark
+      ["c"] = {function()
+                  if vim.o.background == "dark" then
+                      vim.o.background = "light"
+                  else vim.o.background = "dark"
+                  end
+            end,
+            "Toggle colors"
+        }
     },
 
     {

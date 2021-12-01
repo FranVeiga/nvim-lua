@@ -11,7 +11,10 @@ return require('packer').startup(function(use)
     -- whichkey + keybindings
     -- luasnip (not essential) DONE
 
-    use {'neovim/nvim-lspconfig'}
+    use {'neovim/nvim-lspconfig',
+        config = function () require'core.lspconfig' end
+    }
+
     use {'williamboman/nvim-lsp-installer'}
 
     use { 'nvim-treesitter/nvim-treesitter',
@@ -76,6 +79,13 @@ return require('packer').startup(function(use)
     use {'windwp/nvim-autopairs',
         config = function() require'nvim-autopairs'.setup() end
     }
+
+    use {'romgrk/barbar.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'},
+        config = function() require'core.barbar' end
+    }
+
+    use {'folke/tokyonight.nvim'}
 
     end
 
