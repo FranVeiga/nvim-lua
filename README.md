@@ -17,5 +17,5 @@ My config includes:
 
 ## TODO
 
-- [] Add git plugin
-- [] Add file tree plugin
+- [ ] Add git plugin
+- [ ] Add file tree plugin
