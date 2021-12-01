@@ -18,4 +18,6 @@ My config includes:
 ## TODO
 
 [ ] Add git plugin
+
+
 [ ] Add file tree plugin
