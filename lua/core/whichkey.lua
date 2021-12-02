@@ -42,7 +42,9 @@ wk.setup(opts)
 -- NORMAL MODE
 wk.register(
     {
-      ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
+      -- ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
+      ["/"] = { "<cmd>CommentToggle<cr>", "Comment" },
+
 
       -- WINDOWS
       ["w"] = {
@@ -121,7 +123,8 @@ wk.register(
 -- VISUAL MODE
 wk.register(
     {
-        ["/"] = { "<cmd>norm gcc<cr>", "Comment" },
+        -- ["/"] = { "<cmd>norm gcc<cr>", "Comment" },
+        ["/"] = { ":'<,'>CommentToggle<cr>", "Comment" },
     },
 
     {

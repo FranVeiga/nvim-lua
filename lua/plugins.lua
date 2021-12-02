@@ -56,6 +56,12 @@ return require('packer').startup(function(use)
         event = "InsertEnter"
     }
 
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        config = function() require'core.lualine' end,
+    }
+
     use {'tpope/vim-surround'}
 
 
@@ -69,11 +75,16 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
+    -- use {
+    --     'numToStr/Comment.nvim',
+    --     config = function()
+    --         require('Comment').setup()
+    --     end
+    -- }
+    --
+
+    use {'terrortylor/nvim-comment',
+        config = function () require'core.nvim-comment' end,
     }
 
     use {'windwp/nvim-autopairs',
