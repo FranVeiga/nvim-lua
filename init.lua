@@ -50,6 +50,13 @@ Map("n", "<C-k>", "<C-w>k")
 Map("n", "<C-h>", "<C-w>h")
 Map("n", "<C-l>", "<C-w>l")
 
+
+Map("n", "<A-Down>", "<C-w>-")
+Map("n", "<A-Up>", "<C-w>+")
+Map("n", "<A-Left>", "5<C-w><")
+Map("n", "<A-Right>", "5<C-w>>")
+
+
 Map("v", ">", ">gv")
 Map("v", "<", "<gv")
 

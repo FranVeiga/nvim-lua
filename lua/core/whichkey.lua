@@ -71,6 +71,14 @@ wk.register(
           C = {"<cmd>BufferCloseAllButCurrent<cr>", "Close all other buffers"},
           b = {"<cmd>BufferPick<cr>", "Jump to buffer"},
           p = {"<cmd>BufferPin<cr>", "Pin buffer"},
+          ["["] = {"<cmd>tabp<cr>", "Previous Tab"},
+          ["]"] = {"<cmd>tabn<cr>", "Next Tab"},
+
+          t = {
+              name = "Tab",
+              c = {"<cmd>tabc<cr>", "Close"},
+              n = {"<cmd>tabnew<cr>", "New"},
+          },
         },
 
       ["t"] = {
@@ -78,6 +86,7 @@ wk.register(
           t = {"<cmd>Telescope live_grep<cr>", "Live Grep"},
           h = {"<cmd>Telescope help_tags<cr>", "Help"},
           m = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
+          d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Lsp Diagnostics"},
     },
 
       ["l"] = {
