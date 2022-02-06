@@ -17,6 +17,12 @@ return require('packer').startup(function(use)
 
     use {'williamboman/nvim-lsp-installer'}
 
+    use {'tami5/lspsaga.nvim',
+        config = function()
+            require'core.lspsaga'
+        end,
+    }
+
     use { 'nvim-treesitter/nvim-treesitter',
         config = function ()
             require'core.treesitter'
