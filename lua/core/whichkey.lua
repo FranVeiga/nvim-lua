@@ -32,7 +32,14 @@ local opts = {
         align = "center"
     },
     hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-    show_help = true
+    show_help = true,
+    triggers_blacklist = {
+       -- list of mode / prefixes that should never be hooked by WhichKey
+       -- this is mostly relevant for key maps that start with a native binding
+       -- most people should not need to change this
+       i = { "j", "k", ";" },
+       v = { "j", "k" },
+    }
 }
 
 
@@ -42,8 +49,11 @@ wk.setup(opts)
 -- NORMAL MODE
 wk.register(
     {
+
       -- ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
       ["/"] = { "<cmd>CommentToggle<cr>", "Comment" },
+
+      ["s"] = { ":!", "Shell"},
 
 
       -- WINDOWS
@@ -113,11 +123,17 @@ wk.register(
       ["c"] = {function()
                   if vim.o.background == "dark" then
                       vim.o.background = "light"
-                  else vim.o.background = "dark"
+                      vim.g.gruvbox_material_palette = "original"
+                      vim.g.gruvbox_material_background = "hard"
+                      vim.cmd("colorscheme gruvbox-material")
+                  else
+                      vim.o.background = "dark"
+                      vim.cmd("colorscheme tokyonight")
                   end
             end,
             "Toggle colors"
-        }
+        },
+      ["z"] = {"<cmd>ZenMode<cr>", "Zen"},
     },
 
     {

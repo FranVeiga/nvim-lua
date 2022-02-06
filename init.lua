@@ -1,4 +1,4 @@
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.timeoutlen = 200
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -21,6 +21,7 @@ vim.o.updatetime = 300
 vim.o.expandtab = true
 vim.o.scrolloff = 6
 vim.o.signcolumn = "yes"
+vim.o.colorcolumn = "80"
 
 vim.g.tokyonight_style = "night"
 vim.cmd("colorscheme tokyonight")
@@ -40,13 +41,26 @@ function Toggle_dark()
     end
 end
 
+
+
+vim.cmd("noremap q: q::q<cr>")
+-- Plugins
+require "plugins"
+require("luasnip.loaders.from_vscode").load() -- for snippets to work
+-- Set the colorscheme after loading plugins
+
+
+
+
 -- Mappings
 Map('i','kk','<ESC>') -- kk for entering normal mode
 Map("t", "<ESC>", "<C-\\><C-n>") -- ESC for exiting term mode
+Map('i', ';;', '<esc>$a;')
 
 -- Window switching
 Map("n", "<C-j>", "<C-w>j")
 Map("n", "<C-k>", "<C-w>k")
+-- vim.cmd([[nnoremap <C-k> <C-w>k]])
 Map("n", "<C-h>", "<C-w>h")
 Map("n", "<C-l>", "<C-w>l")
 
@@ -59,10 +73,3 @@ Map("n", "<A-Right>", "5<C-w>>")
 
 Map("v", ">", ">gv")
 Map("v", "<", "<gv")
-
-
-vim.cmd("noremap q: q::q<cr>")
--- Plugins
-require "plugins"
-
--- Set the colorscheme after loading plugins

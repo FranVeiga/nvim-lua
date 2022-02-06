@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     -- treesitter DONE
     -- telescope DONE
     -- cmp DONE
-    -- whichkey + keybindings
+    -- whichkey + keybindings DONE
     -- luasnip (not essential) DONE
 
     use {'neovim/nvim-lspconfig',
@@ -40,10 +40,13 @@ return require('packer').startup(function(use)
         config = function () require 'core.cmp' end
     }
 
+    use { "rafamadriz/friendly-snippets" }
 
     use {'L3MON4D3/LuaSnip',
         requires = { {'saadparwaiz1/cmp_luasnip'},
                      {'rafamadriz/friendly-snippets'} },
+        config = function ()
+        end
     }
 
     use {"folke/which-key.nvim",
@@ -96,10 +99,22 @@ return require('packer').startup(function(use)
         config = function() require'core.barbar' end
     }
 
+    use {
+      "folke/zen-mode.nvim",
+      config = function() require("core.zen-mode") end
+    }
+
+    use {'junegunn/limelight.vim'}
+
     use {'folke/tokyonight.nvim'}
+
+    use {'yorik1984/newpaper.nvim'}
+
+    use {'sainnhe/gruvbox-material',
+        config = function() vim.cmd('let g:gruvbox_material_palette = "original"') end}
+
 
     end
 
 )
-
 

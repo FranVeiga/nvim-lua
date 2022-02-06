@@ -37,7 +37,7 @@ cmp_opts = {
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
+        elseif luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
           cmp.complete()
@@ -173,7 +173,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
 
 local rust_analyzer_path = vim.fn.getenv 'HOME' .. '/.local/share/nvim/lsp_servers/rust/rust-analyzer' -- Change to your rust_analyzer root installation
 
