@@ -96,12 +96,13 @@ wk.register(
           t = {"<cmd>Telescope live_grep<cr>", "Live Grep"},
           h = {"<cmd>Telescope help_tags<cr>", "Help"},
           m = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
-          d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Lsp Diagnostics"},
+          d = {"<cmd>Telescope diagnostics<cr>", "Lsp Diagnostics"},
     },
 
       ["l"] = {
           name = "Lsp",
-          r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename in Buffer"},
+          -- r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename in Buffer"},
+          r = {"<cmd>Lspsaga rename<cr>", "Rename in Buffer"},
           q = {"<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Set Loclist"},
           f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format"},
           e = {"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Line Diagnostics"},
@@ -109,7 +110,8 @@ wk.register(
           d = {"<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder"},
           l = {"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List Workspace"},
           D = {"<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition"},
-          a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"}
+          -- a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"}
+          a = { "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", "Code action"}
 
         },
 
@@ -150,6 +152,10 @@ wk.register(
     {
         -- ["/"] = { "<cmd>norm gcc<cr>", "Comment" },
         ["/"] = { ":'<,'>CommentToggle<cr>", "Comment" },
+
+        ["l"] = {
+            a = { ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", "Code Action"}
+        }
     },
 
     {
